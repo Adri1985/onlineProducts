@@ -51,6 +51,8 @@ router.post('/', async (req, res) => {
     console.log(code+title+description+price+thumbnail+stock)
     await productManager1.addProduct(code, title, description, price, thumbnail, stock)
     let products = await productManager1.getProducts()
+    
+    //recibo el io y ejecuto el emit del array de productos cada vez que es modificado por un POST
     req.io.emit('logs', products)
     res.send({status: 'success'})
         

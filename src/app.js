@@ -19,6 +19,8 @@ app.use(express.static(__dirname+'/public'))
 
 app.use(express.json())
 
+
+// aqui comparto el io a traves de un Midi para que el endpoint de productos POST pueda utilizarlo
 function midiIO (req, res, next){
     req.io = io
     next()
