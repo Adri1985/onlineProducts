@@ -50,19 +50,16 @@ router.post('/', async (req, res) => {
     console.log(await productManager1.getProducts())
     console.log(code+title+description+price+thumbnail+stock)
     await productManager1.addProduct(code, title, description, price, thumbnail, stock)
-
-    req.io.on('connection', socket => {
-        console.log('New client connected');
-    
-        socket.on('message', data => {
-            io.emit('logs', productManager1.getProducts())
-        })
+    let products = await productManager1.getProducts()
+    req.io.emit('logs', products)
+    res.send({status: 'success'})
+        
     })
 
     
 
-    res.send({status: 'success'})
-})
+    
+
 
 router.put('/:id', async(req, res) =>{
     const id = parseInt(req.params.id)

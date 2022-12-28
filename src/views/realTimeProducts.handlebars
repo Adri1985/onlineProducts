@@ -1,5 +1,13 @@
 <h1>Real Time Products!</h1>
 <div id ="products">
+     {{#each products}}
+        <div>
+            <p>ID : {{this.id}}</p>
+            <p>TITLE : {{this.title}}</p>
+            <p>PRICE : {{this.price}}</p>
+            <hr>
+        </div>
+    {{/each}}
     
 </div>
 

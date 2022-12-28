@@ -19,7 +19,7 @@ app.use(express.static(__dirname+'/public'))
 
 app.use(express.json())
 
-function midiIO (req, res){
+function midiIO (req, res, next){
     req.io = io
     next()
 
